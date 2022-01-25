@@ -21,9 +21,9 @@ if(exist("eeg","var")~=1)
   c4={zeros(1,20000);zeros(1,20000);zeros(1,20000);zeros(1,20000)};
   for i=1:12
     if(i<8)
-      [hdr{i},EEG{i}] = edfread(['S001R0',sprintf('%d',i+2),'.edf']);
+      [hdr{i},EEG{i}] = edfread(['edfs/S001R0',sprintf('%d',i+2),'.edf']);
     else
-      [hdr{i},EEG{i}] = edfread(['S001R',sprintf('%d',i+2),'.edf']);
+      [hdr{i},EEG{i}] = edfread(['edfs/S001R',sprintf('%d',i+2),'.edf']);
     end  
     if(mod((i+2),4)==3)
       task{1}=task{1} + EEG{1,i};
@@ -36,8 +36,8 @@ if(exist("eeg","var")~=1)
     end
     
   end
-  [hdrbeo,EEGbeo] = edfread(['S001R01.edf']);%baseline eyes open
-  [hdrbec,EEGbec] = edfread(['S001R02.edf']);%baseline eyes closed
+  [hdrbeo,EEGbeo] = edfread(['edfs/S001R01.edf']);%baseline eyes open
+  [hdrbec,EEGbec] = edfread(['edfs/S001R02.edf']);%baseline eyes closed
   taskname={"open and close left or right fist";"imagine opening and closing left or right fist";"open and close both fists or both feet";"imagine opening and closing both fists or both feet"};
   
   for i=1:4
